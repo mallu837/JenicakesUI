@@ -1,4 +1,4 @@
-local WindUI = {
+Local WindUI = {
 	Window = nil,
 	Theme = nil,
 	Creator = require("./modules/Creator"),
@@ -14,7 +14,7 @@ local WindUI = {
 	ConfigManager = nil,
 	Version = "0.0.0",
 
-	Services = require("./utils/services/Init"),
+	Services = require("./utils/services/init"),
 
 	OnThemeChangeFunction = nil,
 
@@ -90,7 +90,7 @@ local New = Creator.New
 --local Tween = Creator.Tween
 --local ServicesModule = WindUI.Services
 
-local Acrylic = require("./utils/Acrylic/Init")
+local Acrylic = require("./utils/Acrylic/init")
 
 local ProtectGui = protectgui or (syn and syn.protect_gui) or function() end
 
@@ -292,10 +292,10 @@ end
 
 function WindUI:Popup(PopupConfig)
 	PopupConfig.WindUI = WindUI
-	return require("./components/popup/Init").new(PopupConfig, WindUI.ScreenGui.Popups)
+	return require("./components/popup/init").new(PopupConfig, WindUI.ScreenGui.Popups)
 end
 
-WindUI.Themes = require("./themes/Init")(WindUI, Creator)
+WindUI.Themes = require("./themes/init")(WindUI, Creator)
 
 Creator.Themes = WindUI.Themes
 
@@ -303,7 +303,7 @@ WindUI:SetTheme("Dark")
 WindUI:SetLanguage(Creator.Language)
 
 function WindUI:CreateWindow(Config)
-	local CreateWindow = require("./components/window/Init")
+	local CreateWindow = require("./components/window/init")
 
 	if not RunService:IsStudio() and writefile then
 		if not isfolder("WindUI") then
