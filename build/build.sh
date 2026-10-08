@@ -24,7 +24,7 @@ else
     PREFIX="${B}[ BUILD ]${R}"
 fi
 
-OUTPUT="dist/main.lua"
+OUTPUT="dist/main.lua.text"
 CONFIG="build/darklua.dev.config.json"
 
 PKG=$(node -e "const p=require('./package.json');console.log(JSON.stringify({v:p.version||'',d:p.description||'',r:p.repository||'',s:p.discord||'',l:p.license||''}))")
