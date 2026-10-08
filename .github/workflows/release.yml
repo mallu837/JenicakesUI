@@ -51,16 +51,6 @@ jobs:
                     echo "content=No changelog provided." >> "$GITHUB_OUTPUT"
                   fi
 
-            - name: Get main file from package.json
-              id: package
-              run: |
-                  if [ -f package.json ]; then
-                    main=$(python3 -c "import sys,json; print(json.load(open('package.json')).get('main','main.lua'))")
-                    echo "main=$main" >> "$GITHUB_OUTPUT"
-                  else
-                    echo "main=main.lua" >> "$GITHUB_OUTPUT"
-                  fi
-
             - name: Create Release
               uses: softprops/action-gh-release@v2
               with:
@@ -69,7 +59,8 @@ jobs:
                   body: ${{ steps.changelog.outputs.content }}
                   draft: false
                   prerelease: false
-                  files: ${{ steps.package.outputs.main }}
+                  make_latest: true
+                  files: dist/main.lua
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
