@@ -1,4 +1,4 @@
-Local WindUI = {
+local WindUI = {
 	Window = nil,
 	Theme = nil,
 	Creator = require("./modules/Creator"),
